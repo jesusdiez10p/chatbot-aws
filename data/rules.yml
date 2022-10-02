@@ -1,0 +1,43 @@
+version: "3.1"
+
+rules:
+- rule: Greet anytime the user greets
+  steps:
+  - intent: greet
+  - action: utter_greet
+
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- rule: summ
+  condition:
+  - slot_was_set:
+    - partido
+    - tema
+  steps:
+  - intent: summarize
+  - action: action_get_summarize
+  - action: utter_add_task
+
+- rule: key
+  condition:
+  - slot_was_set:
+    - partido
+    - tema
+  steps:
+  - intent: inform_keys
+  - action: action_get_keys
+  - action: utter_add_task
+
+- rule: topic
+  steps:
+  - intent: ask_topic
+  - action: action_get_partido_topic
+  - action: utter_add_task
+
+- rule: Say 'I am a bot' anytime the user challenges
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot

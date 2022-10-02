@@ -1,0 +1,133 @@
+version: "3.1"
+
+stories:
+
+- story: ask summarize wo element 1
+  steps:
+  - intent: summarize
+  - or:
+    - slot_was_set:
+      - partido: null
+    - slot_was_set:
+      - tema: null
+  - action: action_ask_element
+  - or:
+    - intent: add_partido
+    - intent: add_capitulo
+  - action: action_check_existence
+  - slot_was_set:
+    - find: true
+  - slot_was_set:
+    - partido
+  - slot_was_set:
+    - tema
+  - action: action_get_summarize
+  - action: utter_add_task
+
+- story: ask summarize wo element 2
+  steps:
+  - intent: summarize
+  - or:
+    - slot_was_set:
+      - partido: null
+    - slot_was_set:
+      - tema: null
+  - action: action_ask_element
+  - intent: list_nombres
+  - action: action_list_elements
+  - or:
+    - intent: add_partido
+    - intent: add_capitulo
+  - action: action_check_existence
+  - slot_was_set:
+    - find: true
+  - slot_was_set:
+    - partido
+  - slot_was_set:
+    - tema
+  - action: action_get_summarize
+  - action: utter_add_task
+
+- story: ask keys wo element 1
+  steps:
+  - intent: inform_keys
+  - or:
+    - slot_was_set:
+      - partido: null
+    - slot_was_set:
+      - tema: null
+  - action: action_ask_element
+  - or:
+    - intent: add_partido
+    - intent: add_capitulo
+  - action: action_check_existence
+  - slot_was_set:
+    - find: true
+  - slot_was_set:
+    - partido
+  - slot_was_set:
+    - tema
+  - action: action_get_keys
+  - action: utter_add_task
+
+- story: ask keys wo element 2
+  steps:
+  - intent: inform_keys
+  - or:
+    - slot_was_set:
+      - partido: null
+    - slot_was_set:
+      - tema: null
+  - action: action_ask_element
+  - intent: list_nombres
+  - action: action_list_elements
+  - or:
+    - intent: add_partido
+    - intent: add_capitulo
+  - action: action_check_existence
+  - slot_was_set:
+    - find: true
+  - slot_was_set:
+    - partido
+  - slot_was_set:
+    - tema
+  - action: action_get_keys
+  - action: utter_add_task
+
+- story: ask again
+  steps:
+  - action: action_ask_element
+  - or:
+    - intent: add_partido
+    - intent: add_capitulo
+  - action: action_check_existence
+  - or:
+    - slot_was_set:
+      - partido: null
+    - slot_was_set:
+      - tema: null
+  - action: action_ask_element
+  
+- story: ask again w list
+  steps:
+  - action: action_ask_element
+  - intent: list_nombres
+  - action: action_list_elements
+  - or:
+    - intent: add_partido
+    - intent: add_capitulo
+  - action: action_check_existence
+  - or:
+    - slot_was_set:
+      - partido: null
+    - slot_was_set:
+      - tema: null
+  - action: action_ask_element
+
+- story: ask topic
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_topic
+  - action: action_get_partido_topic
+  - action: utter_add_task

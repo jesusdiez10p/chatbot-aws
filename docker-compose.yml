@@ -1,0 +1,16 @@
+version: '3.0'
+services:
+  rasa:
+    image: rasa/rasa:latest
+    ports:
+      - 5005:5005
+    volumes:
+      - ./:/app
+    command: 
+      - run
+  action-server:
+    image: freshprince10p/rasa-sdk-unidecode:latest
+    volumes:
+      - ./actions:/app/actions
+    ports:
+      - 5055:5055

@@ -1,0 +1,36 @@
+[
+  {
+    "tag_name": "entity",
+    "ids_to_tags": {
+      "1": "B-partido",
+      "2": "I-partido",
+      "3": "L-partido",
+      "4": "U-partido",
+      "5": "B-tema",
+      "6": "I-tema",
+      "7": "L-tema",
+      "8": "U-tema",
+      "9": "B-topic",
+      "10": "I-topic",
+      "11": "L-topic",
+      "12": "U-topic",
+      "0": "O"
+    },
+    "tags_to_ids": {
+      "B-partido": 1,
+      "I-partido": 2,
+      "L-partido": 3,
+      "U-partido": 4,
+      "B-tema": 5,
+      "I-tema": 6,
+      "L-tema": 7,
+      "U-tema": 8,
+      "B-topic": 9,
+      "I-topic": 10,
+      "L-topic": 11,
+      "U-topic": 12,
+      "O": 0
+    },
+    "num_tags": 13
+  }
+]

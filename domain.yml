@@ -1,0 +1,74 @@
+version: '3.1'
+intents:
+- greet
+- goodbye
+- bot_challenge
+- inform_keys
+- summarize
+- ask_topic
+- add_capitulo
+- add_partido
+- list_nombres
+# - affirm:
+#   use_entities: []
+# - deny:
+#   use_entities: []
+entities:
+- tema
+- partido
+- topic
+actions:
+- action_get_keys
+- action_get_summarize
+- action_get_partido_topic
+- action_check_existence
+- action_ask_element
+- action_list_elements
+slots:
+  find:
+    type: bool
+    mappings:
+    - type: custom
+  partido:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: partido
+  tema:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: tema
+  # confirm:
+  #   type: bool
+  #   mappings:
+  #   - type: from_intent
+  #     intent: affirm
+  #     value: true
+  #   - type: from_intent
+  #     intent: deny
+  #     value: false
+
+responses:
+  utter_greet:
+  - text: Hola mi nombre es Kunaqi, en que te puedo ayudar?
+  utter_task_confirm:
+  - text: Sí claro
+  utter_ask_again:
+  - text: Disculpa, no se a que te refieres
+  utter_task_deny:
+  - text: No estoy programado para eso
+  utter_add_task:
+  - text: Te puedo ayudar con algo más?
+  utter_goodbye:
+  - text: Adios, que tengas un buen día.
+  - text: Hasta pronto, que tengas un bonito día.
+  - text: Nos vemos, cuidate.
+  utter_iamabot:
+  - text: Soy un bot y mi nombre es Kunaqi
+
+session_config:
+  session_expiration_time: 120
+  carry_over_slots_to_new_session: true
